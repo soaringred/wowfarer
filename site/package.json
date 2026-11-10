@@ -1,0 +1,25 @@
+{
+  "name": "@wowfarer/site",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "typecheck": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource/inter": "^5.2.5",
+    "@fontsource/jetbrains-mono": "^5.2.5",
+    "@fontsource/spectral": "^5.2.5",
+    "@wowfarer/decoder": "workspace:*",
+    "astro": "^5.12.0",
+    "fflate": "0.8.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "5.9.2"
+  }
+}

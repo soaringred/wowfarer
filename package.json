@@ -1,0 +1,21 @@
+{
+  "name": "wowfarer",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Decode your own RestedXP guide export in the browser and package it as a companion addon.",
+  "license": "MIT",
+  "packageManager": "yarn@4.17.0",
+  "workspaces": [
+    "packages/*",
+    "site"
+  ],
+  "scripts": {
+    "build": "yarn workspace @wowfarer/site build",
+    "deploy": "yarn build && wrangler deploy",
+    "test": "yarn workspace @wowfarer/decoder test",
+    "typecheck": "yarn workspace @wowfarer/decoder typecheck && yarn workspace @wowfarer/site typecheck"
+  },
+  "devDependencies": {
+    "wrangler": "4.149.0"
+  }
+}

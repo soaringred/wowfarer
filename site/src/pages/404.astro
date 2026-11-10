@@ -1,0 +1,12 @@
+---
+import Base, { brand } from '../layouts/Base.astro';
+---
+<Base title={`Page not found · ${brand}`} description="This page doesn't exist." noindex>
+  <main class="wrap page">
+    <header class="page-head">
+      <h1>This page doesn't exist.</h1>
+      <p class="page-lede">The link may be out of date. The decoder is on the home page.</p>
+      <p><a class="btn btn-primary" href="/">Go to the decoder</a></p>
+    </header>
+  </main>
+</Base>

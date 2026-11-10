@@ -1,0 +1,14 @@
+# Cloudflare Workers response headers (deployed verbatim from public/).
+
+# Astro's content-hashed bundles and fonts: safe to cache forever.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Security headers for every response. CSP matches the page's meta tag and
+# adds frame-ancestors, which only works as a header.
+/*
+  Content-Security-Policy: connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Cross-Origin-Opener-Policy: same-origin

@@ -1,0 +1,126 @@
+---
+import Base, { brand } from '../layouts/Base.astro';
+import GuideWindow from '../components/GuideWindow.astro';
+const addonName = 'Wowfarer_Guides';
+const description = 'Decode the RestedXP guide export you bought, in your browser, and load it into RestedXP with no import step. Nothing is uploaded.';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: brand,
+  url: 'https://wowfarer.com/',
+  description,
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Any',
+  browserRequirements: 'Requires JavaScript',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  isAccessibleForFree: true,
+  license: 'https://opensource.org/license/mit',
+  codeRepository: 'https://github.com/soaringred/wowfarer',
+  image: 'https://wowfarer.com/og.png',
+};
+---
+<Base title={`${brand} · Decode your RestedXP export`} description={description} schema={schema}>
+  <main id="top" class="wrap">
+    <div class="hero">
+      <section class="hero-main" aria-label="Decoder">
+        <div class="lede">
+          <h1 class="rise" style="--i:0">Decode your RestedXP export.</h1>
+          <p class="rise" style="--i:1">Drop the file. Get an addon folder. Your files stay in your browser.</p>
+        </div>
+
+        <div id="state-error" class="error hidden" role="alert">
+          <strong id="error-title"></strong>
+          <p id="error-detail"></p>
+        </div>
+
+        <div id="state-needtag" class="needtag hidden" role="status" aria-live="polite">
+          <strong>Enter the BattleTag this export was issued to.</strong>
+          <p id="needtag-files"></p>
+        </div>
+
+        <div id="state-idle" class="rise" style="--i:2">
+          <label id="drop" class="drop" for="file" tabindex="0">
+            <span class="drop-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            <span class="drop-text">
+              <span class="drop-title">Drop your export here</span>
+              <span class="drop-sub">or click to choose a file</span>
+            </span>
+            <input id="file" type="file" multiple />
+          </label>
+        </div>
+
+        <div id="state-working" class="working hidden" role="status" aria-live="polite">
+          <span class="spinner" aria-hidden="true"></span>
+          Decoding…
+        </div>
+
+        <div id="state-result" class="result hidden" aria-live="polite">
+          <div class="result-head">
+            <div class="titles">
+              <span id="r-title" class="title"></span>
+              <span id="r-meta" class="meta"></span>
+            </div>
+            <button id="reset" class="btn btn-small" type="button">Clear</button>
+          </div>
+          <div class="result-stats">
+            <div class="stat"><b id="r-guides">0</b><span>guides</span></div>
+            <div class="stat"><b id="r-steps">0</b><span>steps</span></div>
+            <div class="stat"><b id="r-size">0</b><span>plain text</span></div>
+          </div>
+          <ul id="r-groups" class="groups" aria-label="Guide groups"></ul>
+          <div class="result-actions">
+            <button id="dl-addon" class="btn btn-primary" type="button">Download addon pack</button>
+            <button id="dl-text" class="btn btn-secondary" type="button">Plain text</button>
+          </div>
+          <p class="result-hint">Unzip into <code>Interface/AddOns</code> so you have <code id="r-path">Interface/AddOns/{addonName}</code>, then <code>/reload</code>.</p>
+        </div>
+
+        <div class="tagrow rise" style="--i:3">
+          <label for="tag">BattleTag</label>
+          <div class="tagrow-fields">
+            <input id="tag" type="text" aria-describedby="tag-hint" placeholder="Name#1234" autocomplete="off" spellcheck="false" autocapitalize="off" />
+            <button id="tag-go" class="btn btn-secondary hidden" type="button">Decode</button>
+          </div>
+          <small id="tag-hint">Read from the filename. Only needed if you renamed the file.</small>
+        </div>
+      </section>
+
+      <aside class="hero-aside rise" style="--i:3" aria-label="The addon in game">
+        <GuideWindow />
+        <p>Loads into the free RestedXP addon. No import step.</p>
+      </aside>
+    </div>
+
+    <section id="install" class="section" aria-labelledby="install-h">
+      <h2 id="install-h">Install</h2>
+      <div class="section-body">
+        <ol class="steps">
+          <li>Install the free RestedXP addon from <a href="https://www.curseforge.com/wow/addons/restedxp-guide" rel="noopener">CurseForge</a> or Wago.</li>
+          <li>Decode your export above. Unzip the pack into <code>Interface/AddOns</code>.</li>
+          <li>Type <code>/reload</code>. The guides appear in RestedXP's menu. Use them within the account permissions of your guide licence.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="how" class="section" aria-labelledby="how-h">
+      <h2 id="how-h">How it works</h2>
+      <div class="section-body">
+        <ol class="steps">
+          <li>Your export is Base64 around a cipher around zlib. The key is the BattleTag in the filename.</li>
+          <li>This page reverses those layers in your browser and checks every checksum the file carries.</li>
+          <li>Each guide becomes a Lua file that calls RestedXP's own <code>RegisterGuide</code>, packed as a small companion addon. RestedXP loads it like its built-in guides.</li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <div id="drag-overlay" class="drag-overlay" aria-hidden="true">
+    <div class="drag-card">
+      <span class="drop-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+      <span class="drag-title">Drop to decode</span>
+      <span class="drag-sub">The file stays in this browser.</span>
+    </div>
+  </div>
+
+  <script src="../scripts/decoder-ui.ts"></script>
+</Base>

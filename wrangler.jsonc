@@ -1,0 +1,20 @@
+{
+  // Static assets only: no Worker script. Deploy: yarn deploy
+  "name": "wowfarer",
+  "compatibility_date": "2026-11-01",
+  // Only wowfarer.com: no duplicate copies on workers.dev URLs.
+  "workers_dev": false,
+  "preview_urls": false,
+  "assets": {
+    "directory": "./site/dist",
+    // Slashless canonicals; the asset server's default is the opposite.
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  // Needs the wowfarer.com zone active in this Cloudflare account; deploy creates
+  // the DNS records. www should 301 to the apex via a Redirect Rule (canonical).
+  "routes": [
+    { "pattern": "wowfarer.com", "custom_domain": true },
+    { "pattern": "www.wowfarer.com", "custom_domain": true }
+  ]
+}

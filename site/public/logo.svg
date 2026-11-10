@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Wowfarer">
+  <!-- Waypoint arrow: lit side left, shadowed side right, split by a centre line. Transparent background. -->
+  <polygon points="16,2 4,29 16,23" fill="#EDF0F5" stroke="#0B0D12" stroke-width="1" stroke-linejoin="round"/>
+  <polygon points="16,2 28,29 16,23" fill="#C8902E" stroke="#0B0D12" stroke-width="1" stroke-linejoin="round"/>
+  <line x1="16" y1="2" x2="16" y2="23" stroke="#0B0D12" stroke-width="1.25" stroke-linecap="round"/>
+</svg>

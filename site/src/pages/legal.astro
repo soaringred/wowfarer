@@ -1,0 +1,110 @@
+---
+import Base, { brand, repo } from '../layouts/Base.astro';
+
+const copyrightAct = 'https://www.legislation.gov.au/C1968A00063/latest/text';
+const consumerRights = 'https://www.accc.gov.au/consumers/buying-products-and-services/consumer-rights-and-guarantees';
+const blizzardPolicy = 'https://us.forums.blizzard.com/en/wow/t/ui-add-on-development-policy/24534';
+const publisherTerms = 'https://shop.restedxp.com/terms-conditions/';
+---
+<Base title={`Terms of Use and Legal Notices · ${brand}`} description="Terms governing use of Wowfarer, intellectual property notices, software licensing and privacy information.">
+  <main class="wrap page">
+    <header class="page-head">
+      <h1 id="legal-h">Terms of Use and Legal Notices</h1>
+      <p class="page-lede">These terms govern use of the {brand} website and hosted decoder.</p>
+      <p class="page-meta">Last updated: <time datetime="2026-11-10">10 November 2026</time>.</p>
+    </header>
+
+    <section id="service" class="section" aria-labelledby="service-h">
+      <h2 id="service-h">The Service</h2>
+      <div class="section-body legal">
+        <div>
+          <h3>1. Nature of the service</h3>
+          <p>{brand} is an independently maintained, noncommercial, open-source project. The website and decoder are provided free of charge. The project does not accept donations or charge for generated files.</p>
+          <p>The decoder converts a user-supplied RestedXP guide export into readable text using the BattleTag associated with that export. It implements the file format used by the publicly available addon, including its cipher, decompression and checksum verification. Processing takes place on the user's device.</p>
+          <p>Users may download the text or a companion addon that supplies it to <code>RXPGuides.RegisterGuide</code>, the same registration interface used by RestedXP's <a href="https://github.com/RestedXP/RXPGuides/blob/main/Guides/RestedXP%20Alliance%201-14%20Human.lua" rel="noopener">bundled starter guides</a>. The companion addon does not replace or patch the publisher's loader.</p>
+          <p>{brand} does not provide a paid guide library, upload selected guide files, recover unknown BattleTags, or verify purchases or account ownership. Website illustrations contain fictional example steps.</p>
+        </div>
+        <div>
+          <h3>2. Platform compatibility</h3>
+          <p>The companion addon is supplied without charge as readable Lua. These characteristics are consistent with the free-distribution and code-visibility requirements in Blizzard's <a href={blizzardPolicy} rel="noopener">UI Add-On Development Policy</a>. Use remains subject to applicable game and addon rules. Compatibility does not constitute approval or endorsement by Blizzard or RestedXP.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="legal-basis" class="section" aria-labelledby="rights-h">
+      <h2 id="rights-h">Intellectual Property</h2>
+      <div class="section-body legal">
+        <div>
+          <h3>3. Software licence</h3>
+          <p>{brand}'s original software and website source are made available under the <a href={`${repo}/blob/main/LICENSE`} rel="noopener">MIT licence</a>. These website terms do not amend the permissions granted by that licence. Third-party dependencies remain subject to their respective licences.</p>
+          <p>The RestedXP addon is a separate project distributed under its <a href="https://github.com/RestedXP/RXPGuides/blob/main/LICENSE" rel="noopener">published licence</a>. {brand} does not grant rights in that addon.</p>
+        </div>
+        <div>
+          <h3>4. Rights in guide content</h3>
+          <p>Copyright and other rights in guide content remain with the relevant rightsholders. Conversion does not transfer ownership, place paid guide content under an open-source licence, or expand a user's existing permissions. {brand}'s software licence does not license the guide text contained in generated files.</p>
+          <p>Guide content may be subject to separate <a href={publisherTerms} rel="noopener">publisher terms</a>, including account restrictions. The relevant terms are those that validly apply to the user's purchase and use, subject to applicable law. This notice does not determine the enforceability of any particular restriction.</p>
+        </div>
+        <div>
+          <h3>5. Statutory rights and exceptions</h3>
+          <p>Nothing in these terms restricts an act permitted by applicable copyright law or excludes a right that cannot lawfully be excluded. In Australia, relevant legislation includes the <a href={copyrightAct} rel="noopener">Copyright Act 1968 (Cth)</a> and the <a href={consumerRights} rel="noopener">Australian Consumer Law</a>.</p>
+          <p>Possession of an export, knowledge of its BattleTag and successful decoding do not, by themselves, establish permission for every subsequent use. Any reliance on a statutory exception must satisfy its requirements. Availability of this service is not a representation that every use is authorised.</p>
+        </div>
+        <div>
+          <h3>6. Trade marks and affiliation</h3>
+          <p>{brand} is not affiliated with, sponsored by or endorsed by RestedXP or Blizzard Entertainment. RestedXP and World of Warcraft are trade marks of their respective owners. References to those names identify the products and compatibility described on this website.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="terms" class="section" aria-labelledby="terms-h">
+      <h2 id="terms-h">Conditions of Use</h2>
+      <div class="section-body legal">
+        <div>
+          <h3>7. Permitted use and user responsibilities</h3>
+          <p>Use of the hosted decoder is subject to these conditions. You are responsible for ensuring that you have lawfully obtained each export and are entitled to decode, copy and use its contents under applicable law and any enforceable licence terms.</p>
+          <ul class="terms">
+            <li>You must not use the service to obtain unauthorised access to content or accounts, or to circumvent a technological protection measure without permission or an applicable legal exception.</li>
+            <li>You must not sell, publish, share or otherwise distribute guide content or generated packs unless you have the necessary rights.</li>
+            <li>You must preserve copyright notices, attribution and rights-management information where required by law or the applicable licence.</li>
+            <li>You must comply with applicable game and addon terms. A successful checksum check confirms file integrity; it does not establish ownership or account eligibility.</li>
+          </ul>
+          <p>These responsibilities do not exclude or transfer any legal obligation of the operator that cannot lawfully be excluded or transferred.</p>
+        </div>
+        <div>
+          <h3>8. Availability and warranties</h3>
+          <p>Subject to the non-excludable rights described below, the website and software are provided as is and as available. No warranty is given that the service will be uninterrupted, error-free, compatible with future game or addon versions, or suitable for a particular gameplay outcome. Keep your original export and review generated files before use.</p>
+        </div>
+        <div>
+          <h3>9. Liability and consumer guarantees</h3>
+          <p>Nothing in these terms or the software licence excludes, restricts or modifies a consumer guarantee, right, remedy or liability that cannot lawfully be excluded, including under the Australian Consumer Law.</p>
+          <p>Subject to that qualification and to the extent permitted by law, the operator and contributors exclude implied warranties and liability for indirect or consequential loss arising from use of the website or software.</p>
+        </div>
+        <div>
+          <h3>10. Amendments</h3>
+          <p>Revised terms will be published on this page with an updated date and apply prospectively to use of the hosted service. Revisions do not retrospectively alter accrued rights or the MIT licence for software already received.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy" class="section" aria-labelledby="privacy-h">
+      <h2 id="privacy-h">Privacy Notice</h2>
+      <div class="section-body legal">
+        <div>
+          <h3>11. Local processing of guide files</h3>
+          <p>Selected files, filenames, BattleTags and decoded text are processed in your browser. The decoder does not transmit them to {brand}, Cloudflare, RestedXP, Blizzard or an analytics service. The website requires no user account or payment details.</p>
+          <p>Working data is held in page memory. The decoder does not persist that data in cookies, browser local storage or a server database. Clear resets the interface; closing the page ends the session. Original files and downloaded output remain on your device until you delete them.</p>
+        </div>
+        <div>
+          <h3>12. Hosting and traffic information</h3>
+          <p>Cloudflare hosts and delivers this website. To serve and protect it, Cloudflare processes connection information such as IP addresses, requested URLs and technical request data. It may retain network and security logs under its <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener">privacy policy</a>.</p>
+          <p>Cloudflare may make aggregate traffic figures, including request and visitor counts, and security information available to the operator through its dashboard. These records concern website traffic. They do not contain guide files or BattleTags processed locally by the decoder.</p>
+        </div>
+        <div>
+          <h3>13. Cookies and external services</h3>
+          <p>The application code includes no advertising, analytics scripts or tracking cookies. Fonts, scripts and styles are served with the site. Depending on the security services enabled, Cloudflare may use <a href="https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/" rel="noopener">security cookies</a> when delivering the website.</p>
+          <p>External links lead to services with their own terms and privacy practices. Do not include paid guide files, BattleTags or other personal information in public project reports.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</Base>

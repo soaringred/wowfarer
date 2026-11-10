@@ -1,0 +1,115 @@
+---
+/** A static mock of the in-game guide window, for the hero. Every name and step in it is invented. */
+---
+<div class="gw" role="img" aria-label="Illustration of the in-game guide window showing fictional example steps">
+  <div class="gw-title">
+    <span class="gw-name">12–14 Emberfall Coast</span>
+    <span class="gw-count">Step 12 of 48</span>
+    <span class="gw-x" aria-hidden="true">
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 1l8 8M9 1L1 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </span>
+  </div>
+
+  <div class="gw-current">
+    <div class="gw-line"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 3h12v7H8l-3 3v-3H2V3Z" stroke="#8E97AA" stroke-width="1.3" stroke-linejoin="round"/></svg><span>Talk to <i class="npc">Warden Halvek</i></span></div>
+    <div class="gw-line"><b class="q" aria-hidden="true">?</b><span>Turn in <i class="quest">The Broken Lantern</i></span></div>
+    <div class="gw-line"><b class="q" aria-hidden="true">!</b><span>Accept <i class="quest">Smoke on the Ridge</i></span></div>
+    <div class="gw-where"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v3M8 11v3M2 8h3M11 8h3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.3"/></svg>Emberfall Coast 42.6, 31.8 · 140 yd</div>
+  </div>
+
+  <div class="gw-next">
+    <div class="gw-step"><div class="gw-line"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13L13 3M9 3h4v4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Enter <i class="dim">Cinder Hollow</i></span></div></div>
+    <div class="gw-step"><div class="gw-line"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13L13 3M9 3h4v4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Follow the cliff path down to the docks</span></div></div>
+    <div class="gw-step">
+      <div class="gw-line"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 3h12v7H8l-3 3v-3H2V3Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg><span>Talk to <i class="npc">Dockmaster Yrsa</i></span></div>
+      <div class="gw-line"><b class="q dimq" aria-hidden="true">?</b><span>Turn in <i class="dim">Smoke on the Ridge</i></span></div>
+      <div class="gw-line"><b class="q dimq" aria-hidden="true">!</b><span>Accept <i class="dim">Cargo Unaccounted For</i></span></div>
+    </div>
+    <div class="gw-step"><div class="gw-line"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 3h12v7H8l-3 3v-3H2V3Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg><span>Talk to <i class="npc">Ferryman Oskel</i>, sail to Greywater Landing</span></div></div>
+  </div>
+
+  <div class="gw-foot">
+    <div class="gw-bar"><div></div></div>
+    <div class="gw-foot-row">
+      <span class="gw-btn">Back</span>
+      <span class="gw-btn">Skip</span>
+      <span class="gw-group">Fictional example</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .gw {
+    --gold: #c9a14d;
+    width: 360px;
+    max-width: 100%;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+    background: #0A0C12;
+    border: 1px solid var(--gold);
+    border-radius: 3px;
+    box-shadow: inset 0 0 0 1px #2A2618, 0 12px 32px rgba(0, 0, 0, 0.6);
+    font-family: var(--sans);
+    color: #E6E9F0;
+    font-size: 13px;
+    line-height: 1.45;
+    overflow: hidden;
+    user-select: none;
+  }
+  .gw i { font-style: normal; }
+  .gw-title {
+    display: flex; align-items: center; gap: 10px;
+    height: 36px; padding: 0 10px 0 12px;
+    border-bottom: 1px solid #2A2618; background: #0E1018; flex: none;
+  }
+  .gw-name {
+    font-family: var(--serif); font-weight: 600; font-size: 15px; color: var(--gold);
+    flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .gw-count { font-size: 12px; color: #8E97AA; font-variant-numeric: tabular-nums; }
+  .gw-x {
+    width: 22px; height: 22px; border-radius: 2px; border: 1px solid #3A3324;
+    background: #141722; color: #A9B2C4; display: inline-flex; align-items: center; justify-content: center;
+  }
+  .gw-current {
+    display: flex; flex-direction: column; gap: 8px;
+    padding: 12px 12px 12px 10px;
+    border-left: 3px solid var(--gold); background: #11141D; border-bottom: 1px solid #2A2618; flex: none;
+  }
+  .gw-line { display: flex; align-items: flex-start; gap: 8px; }
+  .gw-line svg { flex: none; margin-top: 1px; }
+  .q {
+    flex: none; width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;
+    color: var(--gold); font-weight: 700; font-size: 14px; line-height: 1;
+  }
+  .q.dimq { color: inherit; }
+  .npc { color: #7fd37f; }
+  .quest { color: #fff; }
+  .dim { color: #D4D9E3; }
+  .gw-where { display: flex; align-items: center; gap: 8px; padding-top: 2px; font-size: 12px; color: #8E97AA; }
+  .gw-next { flex: 1 1 auto; min-height: 0; overflow: hidden; display: flex; flex-direction: column; color: #99A2B4; }
+  .gw-step { display: flex; flex-direction: column; gap: 6px; padding: 10px 12px 10px 13px; border-bottom: 1px solid #1A1E28; }
+  .gw-foot { flex: none; display: flex; flex-direction: column; border-top: 1px solid #2A2618; background: #0E1018; }
+  .gw-bar { height: 3px; background: #1A1E28; }
+  .gw-bar div { height: 100%; width: 25%; background: var(--gold); }
+  .gw-foot-row { display: flex; align-items: center; gap: 8px; padding: 8px 10px; }
+  .gw-btn {
+    height: 26px; padding: 0 12px; border-radius: 2px; border: 1px solid #5c4a22;
+    background: linear-gradient(#1e1a24, #121018); color: #e3c77a;
+    font-size: 12px; font-weight: 600; display: inline-flex; align-items: center;
+  }
+  .gw-group { margin-left: auto; font-size: 12px; color: #8E97AA; }
+
+  /* Motion for the illustration only: a one-time settle, then a slow waypoint pulse. */
+  .gw-bar div { transform-origin: left center; animation: gw-fill 1200ms cubic-bezier(0.2, 0.8, 0.2, 1) 900ms both; }
+  .gw-step { animation: gw-in 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+  .gw-step:nth-child(1) { animation-delay: 520ms; }
+  .gw-step:nth-child(2) { animation-delay: 600ms; }
+  .gw-step:nth-child(3) { animation-delay: 680ms; }
+  .gw-step:nth-child(4) { animation-delay: 760ms; }
+  .gw-where svg { animation: gw-pulse 2.8s ease-in-out 2s infinite; }
+  @keyframes gw-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes gw-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  @keyframes gw-pulse { 0%, 100% { color: inherit; opacity: 0.7; } 50% { color: var(--gold); opacity: 1; } }
+</style>

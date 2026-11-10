@@ -1,0 +1,101 @@
+---
+import '@fontsource/spectral/500.css';
+import '@fontsource/spectral/600.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  /** JSON-LD object for this page, if any. */
+  schema?: Record<string, unknown>;
+  /** Keep this page out of search results (the 404 page). */
+  noindex?: boolean;
+}
+const { title, description, schema, noindex = false } = Astro.props;
+export const brand = 'Wowfarer';
+export const repo = 'https://github.com/soaringred/wowfarer';
+
+const site = Astro.site ?? new URL('https://wowfarer.com');
+const canonical = new URL(Astro.url.pathname, site);
+const ogImage = new URL('/og.png', site);
+const path = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Block script connection APIs. Fonts, CSS and JS are same-origin files. -->
+  <meta http-equiv="Content-Security-Policy" content="connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" />
+  <meta name="referrer" content="no-referrer" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#0B0D12" />
+
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  {!noindex && <link rel="canonical" href={canonical.href} />}
+  <meta name="robots" content={noindex ? 'noindex' : 'index, follow, max-image-preview:large'} />
+  <meta name="author" content={brand} />
+  <meta name="application-name" content={brand} />
+  <meta name="apple-mobile-web-app-title" content={brand} />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content={brand} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical.href} />
+  <meta property="og:image" content={ogImage.href} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content={`${brand}: Decode your RestedXP export. Drop the file, get an addon folder, your files stay in your browser.`} />
+  <meta property="og:locale" content="en" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage.href} />
+
+  <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+  <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+
+  {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+</head>
+<body>
+  <header class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a href="/" class="brand" aria-label={`${brand} home`}>
+        <Logo size={26} />
+        <span>{brand}</span>
+      </a>
+      <div class="nav-links">
+        <a href="/legal" aria-current={path.startsWith('/legal') ? 'page' : undefined}>Legal</a>
+        <a href={repo} rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <slot />
+
+  <footer>
+    <div class="wrap foot">
+      <p class="foot-note">Use only exports you are authorised to decode and use. Not affiliated with RestedXP or Blizzard Entertainment.</p>
+      <nav aria-label="Footer">
+        <a href="/legal">Terms of Use</a>
+        <a href="/legal#privacy">Privacy Notice</a>
+        <a href={repo} rel="noopener">Source</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

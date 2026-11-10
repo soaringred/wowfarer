@@ -1,0 +1,22 @@
+node_modules/
+.yarn/*
+!.yarn/releases
+.pnp.*
+dist/
+.astro/
+*.log
+.DS_Store
+
+# Never commit guide exports or decoded guide content.
+# Tests look for exports in ./exports (or WOWFARER_EXPORTS) and skip if absent.
+exports/
+decoded/
+*.rxp.txt
+
+# Local verification data may identify private export files.
+.local/
+
+
+# Local deploy settings (Cloudflare account ID). Never committed.
+.env
+.env.*

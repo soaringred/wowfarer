@@ -1,0 +1,24 @@
+{
+  "name": "@wowfarer/decoder",
+  "version": "0.1.0",
+  "description": "Decodes a RestedXP guide export with the BattleTag it was sold to and packages the guides as a companion addon.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "bin": {
+    "wowfarer-decode": "./src/cli.ts"
+  },
+  "scripts": {
+    "test": "node --test \"test/**/*.test.ts\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "fflate": "0.8.2"
+  },
+  "devDependencies": {
+    "@types/node": "24.0.0",
+    "typescript": "5.9.2"
+  }
+}
